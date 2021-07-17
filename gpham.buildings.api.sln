@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Buildings.Web", "Buildings.Web\Buildings.Web.csproj", "{40BE45C4-D529-46A3-AC98-8076499D527C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Buildings.Entities", "Buildings.Entities\Buildings.Entities.csproj", "{CCD64D81-71BA-48BC-94CB-F0F7660B613B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{40BE45C4-D529-46A3-AC98-8076499D527C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40BE45C4-D529-46A3-AC98-8076499D527C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40BE45C4-D529-46A3-AC98-8076499D527C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40BE45C4-D529-46A3-AC98-8076499D527C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCD64D81-71BA-48BC-94CB-F0F7660B613B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCD64D81-71BA-48BC-94CB-F0F7660B613B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCD64D81-71BA-48BC-94CB-F0F7660B613B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCD64D81-71BA-48BC-94CB-F0F7660B613B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
