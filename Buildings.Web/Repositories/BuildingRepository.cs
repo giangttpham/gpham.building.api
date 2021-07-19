@@ -68,6 +68,8 @@ namespace Buildings.Web.Repositories
          * In the context of this project, the methods below aren't required to be async since the app is not communicating with an external database.
          * However, I keep these as "async" methods to represent what the actual calls to the database would look like.
          */
+        //*************************************//
+        
         public async Task<BuildingEntity> CreateBuildingAsync(CreateBuildingRequest request, CancellationToken cancellationToken)
         {
             var nextId = BuildingData.Count + 1;
@@ -85,6 +87,11 @@ namespace Buildings.Web.Repositories
             return await Task.FromResult(created);
         }
 
+        /*
+         * This method performs a soft delete action, meaning it sets the IsDeleted flag of the building entity, if existed, to true.
+         * This will prevent the building to be displayed in the result set of the GetAllBuildingAsync method below.
+         * The building would still persist in the database, which is available for reporting or similar purposes.
+         */
         public async Task<bool> DeleteBuildingAsync(int buildingId, CancellationToken cancellationToken)
         {
             BuildingData.TryGetValue(buildingId, out var building);
@@ -98,6 +105,9 @@ namespace Buildings.Web.Repositories
             return await Task.FromResult(true);
         }
         
+        /*
+         * Returns all buildings that are not soft deleted (i.e any building whose IsDeleted flag is false)
+         */
         public async Task<IEnumerable<BuildingEntity>> GetAllBuildingsAsync(CancellationToken cancellationToken)
         {
             return await Task.FromResult(BuildingData.Values.Where(bd => !bd.IsDeleted).ToList().OrderBy(bd => bd.Name));
