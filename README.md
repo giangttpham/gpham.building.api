@@ -1,5 +1,7 @@
 # Buildings API
 
+## Run the API and the UI app together
+- Check out the UI code project at https://github.com/giangttpham/gpham-buildings-ui. Follow the instructions in the UI app's README file to run this API and the UI app together.
 ## Projects
 
 - Buildings.Entities
