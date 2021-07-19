@@ -110,7 +110,7 @@ namespace Buildings.Web.Repositories
          */
         public async Task<IEnumerable<BuildingEntity>> GetAllBuildingsAsync(CancellationToken cancellationToken)
         {
-            return await Task.FromResult(BuildingData.Values.Where(bd => !bd.IsDeleted).ToList().OrderBy(bd => bd.Name));
+            return await Task.FromResult(BuildingData.Values.Where(bd => !bd.IsDeleted).ToList().OrderBy(bd => bd.Id));
         }
     }
 }
