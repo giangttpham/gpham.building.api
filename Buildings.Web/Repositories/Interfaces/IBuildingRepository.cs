@@ -6,7 +6,7 @@ using Buildings.Entities;
 using Buildings.Web.Models.Requests;
 using Buildings.Web.Models.Responses;
 
-namespace Buildings.Web.Controllers.Repositories.Interfaces
+namespace Buildings.Web.Repositories.Interfaces
 {
     public interface IBuildingRepository
     {

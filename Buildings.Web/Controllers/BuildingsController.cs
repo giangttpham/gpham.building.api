@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Buildings.Entities;
 using Buildings.Web.Mappers.Interfaces;
-using Buildings.Web.Controllers.Repositories.Interfaces;
+using Buildings.Web.Repositories.Interfaces;
 using Buildings.Web.Models.Requests;
 using Buildings.Web.Models.Responses;
 using Microsoft.AspNetCore.Mvc;

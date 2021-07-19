@@ -1,0 +1,8 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c372cf54_002D6281_002D49a3_002Dadbf_002Dcbf4d8428b6e/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="GetAllBuildingsTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::D3C8CDEB-9211-43B1-8A07-7B88A7198E6E::net5.0::Buildings.IntegrationTests.BuildingControllerTests.GetAllBuildingsTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::D3C8CDEB-9211-43B1-8A07-7B88A7198E6E::net5.0::Buildings.IntegrationTests.BuildingControllerTests.DeleteBuildingTest_BuildingExistsInList&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::D3C8CDEB-9211-43B1-8A07-7B88A7198E6E::net5.0::Buildings.IntegrationTests.BuildingControllerTests.CreateBuildingTest&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

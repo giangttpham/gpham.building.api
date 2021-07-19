@@ -3,15 +3,19 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Buildings.Entities;
-using Buildings.Web.Controllers.Repositories.Interfaces;
+using Buildings.Web.Repositories.Interfaces;
 using Buildings.Web.Models.Requests;
 using Buildings.Web.Models.Responses;
 
-namespace Buildings.Web.Controllers.Repositories
+namespace Buildings.Web.Repositories
 {
     public class BuildingRepository : IBuildingRepository
     {
-        private static IDictionary<int, BuildingEntity> _buildingData = new Dictionary<int, BuildingEntity>()
+        /*
+         * For the purpose of this exercise, the data is stored as an in-memory list of objects.
+         * In a production environment, the repository class is responsible for interacting with an actual database using a database client (e.g SqlClient)
+         */
+        public static readonly IDictionary<int, BuildingEntity> BuildingData = new Dictionary<int, BuildingEntity>()
         {
             { 1, new BuildingEntity
                 {
@@ -60,15 +64,14 @@ namespace Buildings.Web.Controllers.Repositories
             },
         };
         
-        public async Task<IEnumerable<BuildingEntity>> GetAllBuildingsAsync(CancellationToken cancellationToken)
-        {
-            return await Task.FromResult(_buildingData.Values.ToList());
-        }
-        
+        /*
+         * In the context of this project, the methods below aren't required to be async since the app is not communicating with an external database.
+         * However, I keep these as "async" methods to represent what the actual calls to the database would look like.
+         */
         public async Task<BuildingEntity> CreateBuildingAsync(CreateBuildingRequest request, CancellationToken cancellationToken)
         {
-            var nextId = _buildingData.Count + 1;
-            _buildingData.Add(nextId, new BuildingEntity
+            var nextId = BuildingData.Count + 1;
+            BuildingData.Add(nextId, new BuildingEntity
             {
                 Address = request.Address,
                 Id = nextId,
@@ -77,14 +80,27 @@ namespace Buildings.Web.Controllers.Repositories
                 Zipcode = request.Zipcode
             });
 
-            _buildingData.TryGetValue(nextId, out var created);
+            BuildingData.TryGetValue(nextId, out var created);
 
             return await Task.FromResult(created);
         }
 
         public async Task<bool> DeleteBuildingAsync(int buildingId, CancellationToken cancellationToken)
         {
-            return await Task.FromResult(_buildingData.Remove(buildingId));
+            BuildingData.TryGetValue(buildingId, out var building);
+
+            if (building == null)
+            {
+                return await Task.FromResult(false);
+            }
+
+            building.IsDeleted = true;
+            return await Task.FromResult(true);
+        }
+        
+        public async Task<IEnumerable<BuildingEntity>> GetAllBuildingsAsync(CancellationToken cancellationToken)
+        {
+            return await Task.FromResult(BuildingData.Values.Where(bd => !bd.IsDeleted).ToList().OrderBy(bd => bd.Name));
         }
     }
 }

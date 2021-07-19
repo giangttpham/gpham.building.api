@@ -1,8 +1,8 @@
 using Buildings.Entities;
 using Buildings.Web.Mappers;
 using Buildings.Web.Mappers.Interfaces;
-using Buildings.Web.Controllers.Repositories;
-using Buildings.Web.Controllers.Repositories.Interfaces;
+using Buildings.Web.Repositories;
+using Buildings.Web.Repositories.Interfaces;
 using Buildings.Web.Models.Responses;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -31,8 +31,11 @@ namespace Buildings.Web
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "Buildings.Web", Version = "v1"});
             });
 
+            // Register services
             services.AddSingleton<IMapper<BuildingEntity, BuildingResponse>, BuildingMapper>();
             services.AddSingleton<IBuildingRepository, BuildingRepository>();
+            
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,8 +48,12 @@ namespace Buildings.Web
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Buildings.Web v1"));
             }
 
-            app.UseHttpsRedirection();
-
+            // Allow CORS
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+            
             app.UseRouting();
 
             app.UseAuthorization();
